@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
@@ -15,6 +16,7 @@ public class Music {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private String name;
 
     @OneToOne
@@ -26,6 +28,8 @@ public class Music {
     private String duration;
 
     private String pictureUrl;
+
+    private String musicUrl;
 
     private String genre;
 }
