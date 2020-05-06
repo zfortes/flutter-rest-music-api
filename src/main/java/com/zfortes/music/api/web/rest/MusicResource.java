@@ -1,5 +1,6 @@
 package com.zfortes.music.api.web.rest;
 
+import com.zfortes.music.api.domain.Music;
 import com.zfortes.music.api.services.MusicService;
 import com.zfortes.music.api.services.dtos.MusicDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,10 @@ public class MusicResource {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable Long id){
         return musicService.deleteById(id);
+    }
+
+    @PutMapping
+    public ResponseEntity<?> put(@RequestBody MusicDTO musicDTO){
+        return musicService.save(musicDTO);
     }
 }
