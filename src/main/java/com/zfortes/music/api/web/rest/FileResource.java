@@ -4,9 +4,12 @@ package com.zfortes.music.api.web.rest;/*
  * @author José Fortes
  **/
 
+import com.zfortes.music.api.services.FileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
@@ -15,16 +18,17 @@ import java.io.*;
 
 //TODO implement Spring Content for correct controller
 @RestController
-@RequestMapping ("/music")
+@RequestMapping ("/stream")
 public class FileResource {
 
     private final Logger logger = LoggerFactory.getLogger(FileResource.class);
 
-    @GetMapping(value = "/stream", produces = "audio/mp3")
-    @ResponseBody
-    public FileSystemResource videoSource() {
-        final String home = System.getProperty("user.home");
-        final File directory = new File(home + File.separator + "Documents" + File.separator + "sample.mp3");
-        return new FileSystemResource(new File(home + File.separator + "Documents" + File.separator + "sample.mp3"));
+    @Autowired
+    FileService fileService;
+
+    @GetMapping(value = "/music", produces = "audio/mp3")
+    //@ResponseBody
+    public ResponseEntity<?> musicSource(@RequestParam("locale") String musicPath) {
+        return fileService.musicSource(musicPath);
     }
 }
