@@ -18,4 +18,8 @@ public class MusicService {
     public ResponseEntity<?> getAll(){
         return ResponseEntity.ok().body(musicRepository.findAll());
     }
+
+    public ResponseEntity<?> getMusicById(Long id) {
+        return ResponseEntity.ok().body(musicRepository.findById(id).get().toDto());
+    }
 }

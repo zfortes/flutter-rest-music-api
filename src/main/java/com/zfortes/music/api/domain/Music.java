@@ -1,5 +1,6 @@
 package com.zfortes.music.api.domain;
 
+import com.zfortes.music.api.services.dtos.MusicDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,4 +33,17 @@ public class Music {
     private String musicUrl;
 
     private String genre;
+
+    public MusicDTO toDto() {
+        MusicDTO musicDTO = new MusicDTO();
+        musicDTO.setAlbum(this.album);
+        musicDTO.setArtist(this.artist);
+        musicDTO.setDuration(this.duration);
+        musicDTO.setGenre(this.genre);
+        musicDTO.setId(this.id);
+        musicDTO.setMusicUrl(this.musicUrl);
+        musicDTO.setName(this.name);
+        musicDTO.setPictureUrl(this.pictureUrl);
+        return musicDTO;
+    }
 }

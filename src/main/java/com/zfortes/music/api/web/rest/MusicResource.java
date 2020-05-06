@@ -21,6 +21,9 @@ public class MusicResource {
     public ResponseEntity<?> getAll(){
         return ResponseEntity.ok().body(musicService.getAll());
     }
-    
-    
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getMusic(@PathVariable Long id){
+        return musicService.getMusicById(id);
+    }
 }
