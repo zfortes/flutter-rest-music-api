@@ -26,4 +26,9 @@ public class MusicResource {
     public ResponseEntity<?> findById(@PathVariable Long id){
         return musicService.findById(id);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable Long id){
+        return musicService.deleteById(id);
+    }
 }

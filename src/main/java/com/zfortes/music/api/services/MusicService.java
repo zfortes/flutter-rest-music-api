@@ -22,4 +22,9 @@ public class MusicService {
     public ResponseEntity<?> findById(Long id) {
         return ResponseEntity.ok().body(musicRepository.findById(id).get().toDto());
     }
+
+    public ResponseEntity<?> deleteById(Long id) {
+        musicRepository.deleteById(id);
+        return ResponseEntity.ok().body("Delete");
+    }
 }
