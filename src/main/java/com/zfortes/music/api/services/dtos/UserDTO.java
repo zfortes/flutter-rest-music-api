@@ -5,10 +5,15 @@ package com.zfortes.music.api.services.dtos;/*
  */
 
 import com.zfortes.music.api.domain.Playlist;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+
+@Getter
+@Setter
 
 public class UserDTO {
     private Long id;

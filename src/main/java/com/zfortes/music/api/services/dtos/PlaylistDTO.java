@@ -6,11 +6,16 @@ package com.zfortes.music.api.services.dtos;/*
 
 import com.zfortes.music.api.domain.Music;
 import com.zfortes.music.api.domain.User;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+
+@Getter
+@Setter
 
 public class PlaylistDTO {
     private Long id;

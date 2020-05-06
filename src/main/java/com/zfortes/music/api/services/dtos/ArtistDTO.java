@@ -5,10 +5,16 @@ package com.zfortes.music.api.services.dtos;/*
  */
 
 import com.zfortes.music.api.domain.Album;
+import com.zfortes.music.api.domain.Artist;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+
+@Getter
+@Setter
 
 public class ArtistDTO {
     private Long id;
@@ -18,5 +24,11 @@ public class ArtistDTO {
 
     private String pictureUrl;
 
-    private List<Album> albums;
+    public Artist toDto(){
+        Artist artist = new Artist();
+        artist.setId(this.id);
+        artist.setName(this.name);
+        artist.setPictureUrl(this.pictureUrl);
+        return artist;
+    }
 }

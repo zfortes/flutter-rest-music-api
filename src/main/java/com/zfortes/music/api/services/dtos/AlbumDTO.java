@@ -4,13 +4,19 @@ package com.zfortes.music.api.services.dtos;/*
  * @author fortes
  */
 
+import com.zfortes.music.api.domain.Album;
 import com.zfortes.music.api.domain.Artist;
 import com.zfortes.music.api.domain.Music;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+
+@Getter
+@Setter
 
 public class AlbumDTO {
     private Long id;
@@ -23,4 +29,12 @@ public class AlbumDTO {
     private List<Artist> artist;
 
     private List<Music> musics;
+
+    public Album toAlbum(){
+        Album album = new Album();
+        album.setArtist(this.artist);
+        album.setId(this.id);
+        album.setMusics(this.musics);
+        return album;
+    }
 }

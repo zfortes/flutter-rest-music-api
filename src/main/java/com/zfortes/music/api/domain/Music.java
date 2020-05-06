@@ -19,10 +19,10 @@ public class Music {
     @NotNull
     private String name;
 
-    @OneToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Album album;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     private List<Artist> artist;
 
     private String duration;
