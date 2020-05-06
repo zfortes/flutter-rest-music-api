@@ -13,17 +13,17 @@ public class MusicResource {
     private MusicService musicService;
 
     @PostMapping
-    public ResponseEntity<?> insertMusic(@RequestBody MusicDTO musicDTO){
-        return musicService.insertMusic(musicDTO);
+    public ResponseEntity<?> save(@RequestBody MusicDTO musicDTO){
+        return musicService.save(musicDTO);
     }
 
     @GetMapping
-    public ResponseEntity<?> getAll(){
-        return ResponseEntity.ok().body(musicService.getAll());
+    public ResponseEntity<?> findAll(){
+        return ResponseEntity.ok().body(musicService.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getMusic(@PathVariable Long id){
-        return musicService.getMusicById(id);
+    public ResponseEntity<?> findById(@PathVariable Long id){
+        return musicService.findById(id);
     }
 }

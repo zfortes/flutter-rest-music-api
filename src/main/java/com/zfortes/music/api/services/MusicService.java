@@ -11,15 +11,15 @@ public class MusicService {
     @Autowired
     private MusicRepository musicRepository;
 
-    public ResponseEntity<?> insertMusic(MusicDTO musicDTO){
+    public ResponseEntity<?> save(MusicDTO musicDTO){
         return ResponseEntity.ok().body(musicRepository.save(musicDTO.toMusic()));
     }
 
-    public ResponseEntity<?> getAll(){
+    public ResponseEntity<?> findAll(){
         return ResponseEntity.ok().body(musicRepository.findAll());
     }
 
-    public ResponseEntity<?> getMusicById(Long id) {
+    public ResponseEntity<?> findById(Long id) {
         return ResponseEntity.ok().body(musicRepository.findById(id).get().toDto());
     }
 }
