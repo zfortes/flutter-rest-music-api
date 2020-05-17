@@ -9,7 +9,6 @@ import com.zfortes.music.api.domain.Artist;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -24,11 +23,32 @@ public class ArtistDTO {
 
     private String pictureUrl;
 
+    private List<Album> albums;
+
+    //TODO REMOVE FUNCTION
     public Artist toDto(){
         Artist artist = new Artist();
         artist.setId(this.id);
         artist.setName(this.name);
         artist.setPictureUrl(this.pictureUrl);
         return artist;
+    }
+
+    public ArtistDTO(Artist u){}
+
+    public ArtistDTO(Long id, String name, String pictureUrl, List<Album> albums){
+        this.id = id;
+        this.name = name;
+        this.pictureUrl = pictureUrl;
+        this.albums = albums;
+    }
+
+    public Artist toArtist(){
+        return new Artist(
+                this.id,
+                this.name,
+                this.pictureUrl,
+                this.albums
+        );
     }
 }
