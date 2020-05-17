@@ -23,8 +23,6 @@ public class ArtistDTO {
 
     private String pictureUrl;
 
-    private List<Album> albums;
-
     //TODO REMOVE FUNCTION
     public Artist toDto(){
         Artist artist = new Artist();
@@ -36,19 +34,17 @@ public class ArtistDTO {
 
     public ArtistDTO(Artist u){}
 
-    public ArtistDTO(Long id, String name, String pictureUrl, List<Album> albums){
+    public ArtistDTO(Long id, String name, String pictureUrl){
         this.id = id;
         this.name = name;
         this.pictureUrl = pictureUrl;
-        this.albums = albums;
     }
 
     public Artist toArtist(){
         return new Artist(
                 this.id,
                 this.name,
-                this.pictureUrl,
-                this.albums
+                this.pictureUrl
         );
     }
 }

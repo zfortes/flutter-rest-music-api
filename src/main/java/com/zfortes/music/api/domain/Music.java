@@ -20,11 +20,11 @@ public class Music {
     @NotNull
     private String name;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne
     private Album album;
 
-    @OneToMany(cascade=CascadeType.ALL)
-    private List<Artist> artist;
+    @ManyToMany
+    private List<Artist> artists;
 
     private String duration;
 
@@ -38,7 +38,7 @@ public class Music {
     public MusicDTO toDto() {
         MusicDTO musicDTO = new MusicDTO();
         musicDTO.setAlbum(this.album);
-        musicDTO.setArtist(this.artist);
+        musicDTO.setArtists(this.artists);
         musicDTO.setDuration(this.duration);
         musicDTO.setGenre(this.genre);
         musicDTO.setId(this.id);

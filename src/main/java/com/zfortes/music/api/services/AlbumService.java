@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -53,17 +54,25 @@ public class AlbumService {
     }
 
     public ResponseEntity<?> insertArtist(Long idAlbum, Long idArtist) {
-        Artist artist = artistRepository.findById(idArtist).get();
-        List<Album> albums = albumRepository.findAlbumsByArtists(artist);
-        Album album = albumRepository.findById(idAlbum).get();
+        Optional<Artist> artist = artistRepository.findById(idArtist);
+        if (!artist.isPresent()){
+            return ResponseEntity.badRequest().body("Artist not add");
+        }
 
-        if (!albums.contains(album)) {
-            artist = artistRepository.findById(idArtist).get();
-            List<Artist> list = album.getArtists();
-            list.add(artist);
-            album.setArtists(list);
-            return ResponseEntity.ok().body(albumRepository.save(album).toDto());
-        }else{
+        boolean isPresent = albumRepository.existsAlbumsByIdAndArtists(idAlbum, artist.get());
+
+        if (isPresent) {
+            return ResponseEntity.badRequest().body("Artist not add");
+        }
+
+        Optional<Album> album = albumRepository.findById(idAlbum);
+        if (album.isPresent()) {
+            Album album1 = album.get();
+            List<Artist> list = album1.getArtists();
+            list.add(artist.get());
+            album1.setArtists(list);
+            return ResponseEntity.ok().body(albumRepository.save(album1).toDto());
+        }else {
             return ResponseEntity.badRequest().body("Artist not add");
         }
     }
@@ -85,8 +94,12 @@ public class AlbumService {
     }
 
     public ResponseEntity<List<AlbumDTO>> findAlbumsByArtists(Long artistID) {
-        Artist artist = artistRepository.findById(artistID).get();
-        List<AlbumDTO> list = albumRepository.findAlbumsByArtists(artist).stream().map(AlbumMapper::toDto).collect(Collectors.toList());
-        return ResponseEntity.ok().body(list);
+        Optional<Artist> artist = artistRepository.findById(artistID);
+        if (artist.isPresent()) {
+            List<AlbumDTO> list = albumRepository.findAlbumsByArtists(artist.get()).stream().map(AlbumMapper::toDto).collect(Collectors.toList());
+            return ResponseEntity.ok().body(list);
+        }else{
+            return ResponseEntity.ok().build();
+        }
     }
 }

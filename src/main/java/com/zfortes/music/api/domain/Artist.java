@@ -25,21 +25,22 @@ public class Artist {
     @ManyToMany(mappedBy = "artists")
     private List<Album> albums;
 
+    @ManyToMany(mappedBy = "artists")
+    private List<Music> musics;
+
     public Artist(){}
 
-    public Artist(Long id, String name, String pictureUrl, List<Album> albums){
+    public Artist(Long id, String name, String pictureUrl){
         this.id = id;
         this.name = name;
         this.pictureUrl = pictureUrl;
-        this.albums = albums;
     }
 
     public ArtistDTO toDto(){
         return new ArtistDTO(
                 this.id,
                 this.name,
-                this.pictureUrl,
-                this.albums
+                this.pictureUrl
         );
     }
 }

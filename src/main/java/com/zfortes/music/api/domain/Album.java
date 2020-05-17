@@ -25,7 +25,7 @@ public class Album {
     @ManyToMany
     private List<Artist> artists;
 
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "album")
     private List<Music> musics;
 
     public AlbumDTO toDto() {

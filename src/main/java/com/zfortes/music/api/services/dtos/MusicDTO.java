@@ -17,7 +17,7 @@ import java.util.List;
 
 @Getter
 @Setter
-
+//TODO terminar relacao de music com album
 public class MusicDTO {
     private Long id;
 
@@ -26,7 +26,7 @@ public class MusicDTO {
 
     private Album album;
 
-    private List<Artist> artist;
+    private List<Artist> artists;
 
     private String duration;
 
@@ -40,7 +40,7 @@ public class MusicDTO {
         Music music = new Music();
         music.setId(this.id);
         music.setAlbum(this.album);
-        music.setArtist(this.artist);
+        music.setArtists(this.artists);
         music.setDuration(this.duration);
         music.setGenre(this.genre);
         music.setMusicUrl(this.musicUrl);
