@@ -34,6 +34,7 @@ public class Music {
 
     private String genre;
 
+    //TODO refatorar o contructor de Music
     public MusicDTO toDto() {
         MusicDTO musicDTO = new MusicDTO();
         musicDTO.setAlbum(this.album);

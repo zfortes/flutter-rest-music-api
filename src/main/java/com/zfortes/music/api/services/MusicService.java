@@ -11,8 +11,9 @@ public class MusicService {
     @Autowired
     private MusicRepository musicRepository;
 
+    //TODO refatorar
     public ResponseEntity<?> save(MusicDTO musicDTO){
-        return ResponseEntity.ok().body(musicRepository.save(musicDTO.toMusic()));
+        return ResponseEntity.ok().body(musicRepository.save(musicDTO.toMusic()).toDto());
     }
 
     public ResponseEntity<?> findAll(){
