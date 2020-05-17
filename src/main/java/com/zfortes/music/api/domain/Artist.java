@@ -22,7 +22,7 @@ public class Artist {
 
     private String pictureUrl;
 
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(mappedBy = "artists")
     private List<Album> albums;
 
     public Artist(){}

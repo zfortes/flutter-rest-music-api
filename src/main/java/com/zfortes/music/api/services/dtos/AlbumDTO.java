@@ -26,15 +26,20 @@ public class AlbumDTO {
 
     private String pictureUrl;
 
-    private List<Artist> artist;
+    public AlbumDTO(){}
 
-    private List<Music> musics;
+    public AlbumDTO(Long id, String name, String pictureUrl){
+        this.id = id;
+        this.name = name;
+        this.pictureUrl = pictureUrl;
+    }
 
     public Album toAlbum(){
         Album album = new Album();
-        album.setArtist(this.artist);
         album.setId(this.id);
-        album.setMusics(this.musics);
+        album.setPictureUrl(this.pictureUrl);
+        album.setName(this.name);
         return album;
     }
+
 }
