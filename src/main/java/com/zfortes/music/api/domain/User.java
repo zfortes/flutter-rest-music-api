@@ -3,7 +3,6 @@ package com.zfortes.music.api.domain;
 import com.zfortes.music.api.services.dtos.UserDTO;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

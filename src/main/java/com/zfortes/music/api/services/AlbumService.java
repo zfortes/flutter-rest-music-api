@@ -7,12 +7,10 @@ import com.zfortes.music.api.repository.AlbumRepository;
 import com.zfortes.music.api.repository.ArtistRepository;
 import com.zfortes.music.api.repository.MusicRepository;
 import com.zfortes.music.api.services.dtos.AlbumDTO;
-import com.zfortes.music.api.services.dtos.MusicDTO;
 import com.zfortes.music.api.services.mappers.AlbumMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jdbc.core.namedparam.NamedParameterUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

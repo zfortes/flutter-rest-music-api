@@ -1,11 +1,9 @@
 package com.zfortes.music.api.services;
 
-import com.zfortes.music.api.domain.User;
 import com.zfortes.music.api.repository.UserRepository;
 import com.zfortes.music.api.services.dtos.UserDTO;
 import com.zfortes.music.api.services.mappers.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 

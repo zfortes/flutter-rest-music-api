@@ -1,12 +1,11 @@
 package com.zfortes.music.api.domain;
 
-import java.util.List;
-
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @Setter

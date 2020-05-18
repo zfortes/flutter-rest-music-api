@@ -1,9 +1,7 @@
 package com.zfortes.music.api.web.rest;
 
-import com.zfortes.music.api.domain.Artist;
 import com.zfortes.music.api.services.ArtistService;
 import com.zfortes.music.api.services.dtos.ArtistDTO;
-import com.zfortes.music.api.services.dtos.MusicDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

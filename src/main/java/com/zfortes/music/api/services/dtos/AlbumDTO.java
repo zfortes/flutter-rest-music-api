@@ -5,15 +5,10 @@ package com.zfortes.music.api.services.dtos;/*
  */
 
 import com.zfortes.music.api.domain.Album;
-import com.zfortes.music.api.domain.Artist;
-import com.zfortes.music.api.domain.Music;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Getter
 @Setter

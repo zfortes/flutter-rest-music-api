@@ -4,13 +4,11 @@ package com.zfortes.music.api.services.dtos;/*
  * @author fortes
  */
 
-import com.zfortes.music.api.domain.Album;
 import com.zfortes.music.api.domain.Artist;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Getter
 @Setter

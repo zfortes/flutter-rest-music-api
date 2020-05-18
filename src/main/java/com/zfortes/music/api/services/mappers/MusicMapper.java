@@ -4,13 +4,8 @@ package com.zfortes.music.api.services.mappers;/*
  * @author fortes
  */
 
-import com.zfortes.music.api.domain.Artist;
 import com.zfortes.music.api.domain.Music;
-import com.zfortes.music.api.services.dtos.ArtistDTO;
 import com.zfortes.music.api.services.dtos.MusicDTO;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class MusicMapper {
     public static MusicDTO toDto(Music u){

@@ -1,7 +1,5 @@
 package com.zfortes.music.api.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.zfortes.music.api.services.dtos.ArtistDTO;
 import lombok.Getter;
 import lombok.Setter;
