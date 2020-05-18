@@ -25,14 +25,8 @@ public class Album {
     @ManyToMany
     private List<Artist> artists;
 
-    @OneToMany(mappedBy = "album")
+    @OneToMany
     private List<Music> musics;
 
-    public AlbumDTO toDto() {
-        return new AlbumDTO(
-                this.id,
-                this.name,
-                this.pictureUrl
-        );
-    }
+
 }

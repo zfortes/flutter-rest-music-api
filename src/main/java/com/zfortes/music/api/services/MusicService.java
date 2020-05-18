@@ -23,6 +23,7 @@ public class MusicService {
     @Autowired
     private AlbumRepository albumRepository;
 
+    //TODO erro album null
     public ResponseEntity<?> save(MusicDTO musicDTO) {
         Music music = musicRepository.save(musicDTO.toMusic());
         if (music != null) {

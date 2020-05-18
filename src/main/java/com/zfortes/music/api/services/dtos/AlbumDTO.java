@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,12 +22,15 @@ public class AlbumDTO {
 
     private String pictureUrl;
 
+    private List<ArtistDTO> artists;
+
     public AlbumDTO(){}
 
-    public AlbumDTO(Long id, String name, String pictureUrl){
+    public AlbumDTO(Long id, String name, String pictureUrl, List<ArtistDTO> artists){
         this.id = id;
         this.name = name;
         this.pictureUrl = pictureUrl;
+        this.artists = artists;
     }
 
     public Album toAlbum(){

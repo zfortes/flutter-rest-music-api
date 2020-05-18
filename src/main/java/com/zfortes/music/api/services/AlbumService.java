@@ -29,11 +29,11 @@ public class AlbumService {
     MusicRepository musicRepository;
 
     public ResponseEntity<AlbumDTO> save(AlbumDTO albumDTO) {
-        return ResponseEntity.ok().body(albumRepository.save(albumDTO.toAlbum()).toDto());
+        return ResponseEntity.ok().body(AlbumMapper.toDto(albumRepository.save(albumDTO.toAlbum())));
     }
 
     public ResponseEntity<AlbumDTO> findById(Long id) {
-        return ResponseEntity.ok().body(albumRepository.findById(id).get().toDto());
+        return ResponseEntity.ok().body(AlbumMapper.toDto(albumRepository.findById(id).get()));
     }
 
     public ResponseEntity<List<AlbumDTO>> findAll() {
@@ -43,7 +43,7 @@ public class AlbumService {
 
     public ResponseEntity<?> update(AlbumDTO albumDTO) {
         if (albumDTO.getId() != null)
-            return ResponseEntity.ok().body(albumRepository.save(albumDTO.toAlbum()).toDto());
+            return ResponseEntity.ok().body(AlbumMapper.toDto(albumRepository.save(albumDTO.toAlbum())));
         else
             return ResponseEntity.badRequest().body("ID is not set null");
     }
@@ -71,7 +71,7 @@ public class AlbumService {
             List<Artist> list = album1.getArtists();
             list.add(artist.get());
             album1.setArtists(list);
-            return ResponseEntity.ok().body(albumRepository.save(album1).toDto());
+            return ResponseEntity.ok().body(AlbumMapper.toDto(albumRepository.save(album1)));
         }else {
             return ResponseEntity.badRequest().body("Artist not add");
         }
@@ -95,7 +95,7 @@ public class AlbumService {
             List<Music> list = album1.getMusics();
             list.add(music.get());
             album1.setMusics(list);
-            return ResponseEntity.ok().body(albumRepository.save(album1).toDto());
+            return ResponseEntity.ok().body(AlbumMapper.toDto(albumRepository.save(album1)));
         }else {
             return ResponseEntity.badRequest().body("Music not add");
         }
