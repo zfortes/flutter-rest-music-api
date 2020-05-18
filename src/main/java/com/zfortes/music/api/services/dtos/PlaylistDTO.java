@@ -19,7 +19,6 @@ public class PlaylistDTO {
     @NotNull
     private String name;
 
-    @NotNull
     private AppUserDTO appUser;
 
     private List<MusicDTO> musics;
