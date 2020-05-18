@@ -1,5 +1,7 @@
 package com.zfortes.music.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.zfortes.music.api.services.dtos.MusicDTO;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,17 +36,17 @@ public class Music {
 
     private String genre;
 
-    //TODO refatorar o contructor de Music
-    public MusicDTO toDto() {
-        MusicDTO musicDTO = new MusicDTO();
-        musicDTO.setAlbum(this.album);
-        musicDTO.setArtists(this.artists);
-        musicDTO.setDuration(this.duration);
-        musicDTO.setGenre(this.genre);
-        musicDTO.setId(this.id);
-        musicDTO.setMusicUrl(this.musicUrl);
-        musicDTO.setName(this.name);
-        musicDTO.setPictureUrl(this.pictureUrl);
-        return musicDTO;
-    }
+//    //TODO refatorar o contructor de Music
+//    public MusicDTO toDto() {
+//        MusicDTO musicDTO = new MusicDTO();
+//        musicDTO.setAlbum(this.album);
+//        musicDTO.setArtists(null);
+//        musicDTO.setDuration(this.duration);
+//        musicDTO.setGenre(this.genre);
+//        musicDTO.setId(this.id);
+//        musicDTO.setMusicUrl(this.musicUrl);
+//        musicDTO.setName(this.name);
+//        musicDTO.setPictureUrl(this.pictureUrl);
+//        return musicDTO;
+//    }
 }

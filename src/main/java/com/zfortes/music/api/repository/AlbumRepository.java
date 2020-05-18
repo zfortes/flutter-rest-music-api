@@ -8,10 +8,12 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface AlbumRepository extends JpaRepository<Album, Long> {
     List<Album> findAlbumsByArtists(Artist artistID);
-    List<Music> findAlbumsByMusics(Music music);
+    List<Album> findAlbumByMusics(Music music);
     boolean existsAlbumsByIdAndArtists(Long id, Artist artist);
+    boolean existsAlbumsByIdAndMusics(Long id, Music music);
 }

@@ -1,5 +1,7 @@
 package com.zfortes.music.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.zfortes.music.api.services.dtos.ArtistDTO;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +28,7 @@ public class Artist {
     private List<Album> albums;
 
     @ManyToMany(mappedBy = "artists")
+    @JsonIgnore
     private List<Music> musics;
 
     public Artist(){}

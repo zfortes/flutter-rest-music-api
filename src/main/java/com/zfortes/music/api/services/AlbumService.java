@@ -7,8 +7,10 @@ import com.zfortes.music.api.repository.AlbumRepository;
 import com.zfortes.music.api.repository.ArtistRepository;
 import com.zfortes.music.api.repository.MusicRepository;
 import com.zfortes.music.api.services.dtos.AlbumDTO;
+import com.zfortes.music.api.services.dtos.MusicDTO;
 import com.zfortes.music.api.services.mappers.AlbumMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.namedparam.NamedParameterUtils;
 import org.springframework.stereotype.Service;
@@ -78,17 +80,25 @@ public class AlbumService {
     }
 
     public ResponseEntity<?> insertMusic(Long idAlbum, Long idMusic) {
-        Music music = musicRepository.findById(idMusic).get();
-        List<Music> musics = albumRepository.findAlbumsByMusics(music);
-        Album album = albumRepository.findById(idAlbum).get();
+        Optional<Music> music = musicRepository.findById(idMusic);
+        if (!music.isPresent()){
+            return ResponseEntity.badRequest().body("Music not add");
+        }
 
-        if (!musics.contains(album)) {
-            music = musicRepository.findById(idMusic).get();
-            List<Music> list = album.getMusics();
-            list.add(music);
-            album.setMusics(list);
-            return ResponseEntity.ok().body(albumRepository.save(album).toDto());
-        }else{
+        boolean isPresent = albumRepository.existsAlbumsByIdAndMusics(idAlbum, music.get());
+
+        if (isPresent) {
+            return ResponseEntity.badRequest().body("Music not add");
+        }
+
+        Optional<Album> album = albumRepository.findById(idAlbum);
+        if (album.isPresent()) {
+            Album album1 = album.get();
+            List<Music> list = album1.getMusics();
+            list.add(music.get());
+            album1.setMusics(list);
+            return ResponseEntity.ok().body(albumRepository.save(album1).toDto());
+        }else {
             return ResponseEntity.badRequest().body("Music not add");
         }
     }
@@ -96,10 +106,24 @@ public class AlbumService {
     public ResponseEntity<List<AlbumDTO>> findAlbumsByArtists(Long artistID) {
         Optional<Artist> artist = artistRepository.findById(artistID);
         if (artist.isPresent()) {
-            List<AlbumDTO> list = albumRepository.findAlbumsByArtists(artist.get()).stream().map(AlbumMapper::toDto).collect(Collectors.toList());
+            List<AlbumDTO> list = albumRepository.findAlbumsByArtists(artist.get())
+                    .stream().map(AlbumMapper::toDto).collect(Collectors.toList());
             return ResponseEntity.ok().body(list);
         }else{
-            return ResponseEntity.ok().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+//    public ResponseEntity<AlbumDTO> findAlbumsByMusics(Long id) {
+//        Optional<Music> music = musicRepository.findById(id);
+//        if (!music.isPresent()) {
+//            return ResponseEntity.ok().build();
+//        }
+//        Optional<Album> album = musicRepository.findByAlbum();
+//        if (!album.isEmpty()){
+//            return ResponseEntity.ok().body();
+//        }else{
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+//        }
+//    }
 }

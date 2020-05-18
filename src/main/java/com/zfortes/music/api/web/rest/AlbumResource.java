@@ -29,7 +29,7 @@ public class AlbumResource {
     //TODO implementation not finished
     @PostMapping("/update/add/music")
     public ResponseEntity<?> insertMusic(@RequestBody Map<String, Long> json){
-        return albumService.insertArtist(json.get("albumID"), json.get("musicID"));
+        return albumService.insertMusic(json.get("albumID"), json.get("musicID"));
     }
 
     @GetMapping
@@ -41,6 +41,11 @@ public class AlbumResource {
     public ResponseEntity<?> findAlbumsByArtists(@PathVariable Long id){
         return ResponseEntity.ok().body(albumService.findAlbumsByArtists(id));
     }
+
+//    @GetMapping("/find/music/{id}")
+//    public ResponseEntity<?> findAlbumsByMusics(@PathVariable Long id){
+//        return ResponseEntity.ok().body(albumService.findAlbumsByMusics(id));
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Long id){

@@ -28,6 +28,11 @@ public class MusicResource {
         return musicService.findById(id);
     }
 
+    @GetMapping("/find/album/{id}")
+    public ResponseEntity<?> findByAlbum(@PathVariable Long id){
+        return musicService.findByAlbum(id);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable Long id){
         return musicService.deleteById(id);
