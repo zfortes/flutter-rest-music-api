@@ -11,4 +11,9 @@ public class ArtistMapper {
     public static ArtistDTO toDto(Artist u){
         return new ArtistDTO(u.getId(), u.getName(), u.getPictureUrl());
     }
+
+
+    public static Artist  toArtist(ArtistDTO u) {
+        return new Artist(u.getId(), u.getName(), u.getPictureUrl());
+    }
 }

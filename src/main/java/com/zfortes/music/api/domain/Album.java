@@ -27,5 +27,12 @@ public class Album {
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
     private List<Music> musics;
 
+    public Album(){}
 
+    public Album(Long id, String name, String pictureUrl, List<Artist> artists) {
+        this.id =id;
+        this.name = name;
+        this.pictureUrl = pictureUrl;
+        this.artists = artists;
+    }
 }

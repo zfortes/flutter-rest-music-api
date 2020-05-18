@@ -1,7 +1,7 @@
 package com.zfortes.music.api.web.rest;
 
 import com.zfortes.music.api.services.UserService;
-import com.zfortes.music.api.services.dtos.UserDTO;
+import com.zfortes.music.api.services.dtos.AppUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,22 +16,22 @@ public class UserResource {
     UserService userService;
 
     @PostMapping
-    public ResponseEntity<UserDTO> save(@Valid UserDTO userDTO){
-        return userService.save(userDTO);
+    public ResponseEntity<AppUserDTO> save(@Valid AppUserDTO appUserDTO){
+        return userService.save(appUserDTO);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> findById(@PathVariable Long  id){
+    public ResponseEntity<AppUserDTO> findById(@PathVariable Long  id){
         return userService.findById(id);
     }
 
     @PutMapping
-    public ResponseEntity<?> update(@Valid UserDTO userDTO){
-        return userService.update(userDTO);
+    public ResponseEntity<?> update(@Valid AppUserDTO appUserDTO){
+        return userService.update(appUserDTO);
     }
 
     @GetMapping
-    public ResponseEntity<List<UserDTO>> findAll(){
+    public ResponseEntity<List<AppUserDTO>> findAll(){
         return userService.findAll();
     }
 }

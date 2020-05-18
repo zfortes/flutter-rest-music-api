@@ -1,8 +1,8 @@
 package com.zfortes.music.api.services;
 
 import com.zfortes.music.api.repository.UserRepository;
-import com.zfortes.music.api.services.dtos.UserDTO;
-import com.zfortes.music.api.services.mappers.UserMapper;
+import com.zfortes.music.api.services.dtos.AppUserDTO;
+import com.zfortes.music.api.services.mappers.AppUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -15,22 +15,22 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public ResponseEntity<UserDTO> save(UserDTO userDTO) {
-        return ResponseEntity.ok().body(userRepository.save(userDTO.toUser()).toDto());
+    public ResponseEntity<AppUserDTO> save(AppUserDTO appUserDTO) {
+        return ResponseEntity.ok().body(AppUserMapper.toDto(userRepository.save(AppUserMapper.toAppUser(appUserDTO))));
     }
 
-    public ResponseEntity<UserDTO> findById(Long id) {
-        return ResponseEntity.ok().body(userRepository.findById(id).get().toDto());
+    public ResponseEntity<AppUserDTO> findById(Long id) {
+        return ResponseEntity.ok().body(AppUserMapper.toDto(userRepository.findById(id).get()));
     }
 
-    public ResponseEntity<List<UserDTO>> findAll() {
+    public ResponseEntity<List<AppUserDTO>> findAll() {
         return ResponseEntity.ok()
-                .body(userRepository.findAll().stream().map(UserMapper::toDto).collect(Collectors.toList()));
+                .body(userRepository.findAll().stream().map(AppUserMapper::toDto).collect(Collectors.toList()));
     }
 
-    public ResponseEntity<?> update(UserDTO userDTO) {
-        if (userDTO.getId() != null)
-            return ResponseEntity.ok().body(userRepository.save(userDTO.toUser()).toDto());
+    public ResponseEntity<?> update(AppUserDTO appUserDTO) {
+        if (appUserDTO.getId() != null)
+            return ResponseEntity.ok().body(AppUserMapper.toDto(userRepository.save(AppUserMapper.toAppUser(appUserDTO))));
         else
             return ResponseEntity.badRequest().body("ID is not set null");
     }

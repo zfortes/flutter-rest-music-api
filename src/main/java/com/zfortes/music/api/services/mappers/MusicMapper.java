@@ -4,13 +4,10 @@ package com.zfortes.music.api.services.mappers;/*
  * @author fortes
  */
 
+import com.zfortes.music.api.domain.Album;
 import com.zfortes.music.api.domain.Music;
 import com.zfortes.music.api.services.dtos.AlbumDTO;
-import com.zfortes.music.api.services.dtos.ArtistDTO;
 import com.zfortes.music.api.services.dtos.MusicDTO;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class MusicMapper {
     public static MusicDTO toDto(Music u){
@@ -24,5 +21,18 @@ public class MusicMapper {
                 u.getMusicUrl(),
                 u.getGenre()
                 );
+    }
+
+    public static Music toMusic(MusicDTO u){
+        Album album = u.getAlbum() !=  null ? AlbumMapper.toAlbum(u.getAlbum()) : null;
+        return new Music(
+                u.getId(),
+                u.getName(),
+                album,
+                u.getDuration(),
+                u.getPictureUrl(),
+                u.getMusicUrl(),
+                u.getGenre()
+        );
     }
 }

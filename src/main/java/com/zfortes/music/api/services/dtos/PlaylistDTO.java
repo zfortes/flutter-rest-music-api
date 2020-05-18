@@ -4,8 +4,6 @@ package com.zfortes.music.api.services.dtos;/*
  * @author fortes
  */
 
-import com.zfortes.music.api.domain.Music;
-import com.zfortes.music.api.domain.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,7 +19,17 @@ public class PlaylistDTO {
     @NotNull
     private String name;
 
-    private User user;
+    @NotNull
+    private AppUserDTO appUser;
 
-    private List<Music> musics;
+    private List<MusicDTO> musics;
+
+    public PlaylistDTO(){}
+
+    public PlaylistDTO(Long id, String name, AppUserDTO appUser, List<MusicDTO> musics){
+        this.id = id;
+        this.name = name;
+        this.appUser = appUser;
+        this.musics = musics;
+    }
 }

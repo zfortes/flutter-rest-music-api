@@ -28,4 +28,16 @@ public class Music {
     private String musicUrl;
 
     private String genre;
+
+    public Music(){}
+
+    public Music(Long id, String name, Album album, String duration, String pictureUrl, String musicUrl, String genre) {
+        this.id = id;
+        this.name = name;
+        this.album = album;
+        this.duration = duration;
+        this.pictureUrl = pictureUrl;
+        this.musicUrl = musicUrl;
+        this.genre = genre;
+    }
 }

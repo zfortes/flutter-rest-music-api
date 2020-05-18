@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Getter
@@ -16,12 +16,22 @@ public class Playlist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotEmpty
     private String name;
 
     @ManyToOne
-    private User user;
+    @NotEmpty
+    private AppUser appUser;
 
     @OneToMany
     private List<Music> musics;
+
+    public Playlist(){}
+
+    public Playlist(Long id, String name, AppUser appUser, List<Music> musics){
+        this.id = id;
+        this.name = name;
+        this.appUser = appUser;
+        this.musics = musics;
+    }
 }

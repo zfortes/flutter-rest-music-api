@@ -5,6 +5,7 @@ package com.zfortes.music.api.services.mappers;/*
  */
 
 import com.zfortes.music.api.domain.Album;
+import com.zfortes.music.api.domain.Artist;
 import com.zfortes.music.api.services.dtos.AlbumDTO;
 import com.zfortes.music.api.services.dtos.ArtistDTO;
 
@@ -18,6 +19,18 @@ public class AlbumMapper {
                         null :  u.getArtists().stream()
                         .map(ArtistMapper::toDto).collect(Collectors.toList());
         return new AlbumDTO(
+                u.getId(),
+                u.getName(),
+                u.getPictureUrl(),
+                artists);
+    }
+
+    public static Album toAlbum(AlbumDTO u) {
+        List<Artist> artists =
+                u.getArtists() == null ?
+                        null :  u.getArtists().stream()
+                        .map(ArtistMapper::toArtist).collect(Collectors.toList());
+        return new Album(
                 u.getId(),
                 u.getName(),
                 u.getPictureUrl(),
