@@ -26,8 +26,6 @@ public class MusicDTO {
 
     private AlbumDTO album;
 
-    private List<ArtistDTO> artists;
-
     private String duration;
 
     private String pictureUrl;
@@ -39,12 +37,11 @@ public class MusicDTO {
     public MusicDTO() {
     }
 
-    public MusicDTO(Long id, String name, AlbumDTO album, List<ArtistDTO> artistDTOS,
+    public MusicDTO(Long id, String name, AlbumDTO album,
                     String duration, String pictureUrl, String musicUrl, String genre) {
         this.id = id;
         this.name = name;
         this.album = album;
-        this.artists = artistDTOS;
         this.duration = duration;
         this.pictureUrl = pictureUrl;
         this.musicUrl = musicUrl;
@@ -55,7 +52,6 @@ public class MusicDTO {
         Music music = new Music();
         music.setId(this.id);
         music.setAlbum(null);
-        music.setArtists(null);
         music.setDuration(this.duration);
         music.setGenre(this.genre);
         music.setMusicUrl(this.musicUrl);

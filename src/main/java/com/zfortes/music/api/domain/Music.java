@@ -25,9 +25,6 @@ public class Music {
     @ManyToOne
     private Album album;
 
-    @ManyToMany
-    private List<Artist> artists;
-
     private String duration;
 
     private String pictureUrl;

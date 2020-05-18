@@ -27,10 +27,6 @@ public class Artist {
     @ManyToMany(mappedBy = "artists")
     private List<Album> albums;
 
-    @ManyToMany(mappedBy = "artists")
-    @JsonIgnore
-    private List<Music> musics;
-
     public Artist(){}
 
     public Artist(Long id, String name, String pictureUrl){

@@ -14,15 +14,10 @@ import java.util.stream.Collectors;
 
 public class MusicMapper {
     public static MusicDTO toDto(Music u){
-        List<ArtistDTO> artists =
-                u.getArtists() == null ?
-                        null :  u.getArtists().stream()
-                        .map(ArtistMapper::toDto).collect(Collectors.toList());
         return new MusicDTO(
                 u.getId(),
                 u.getName(),
                 u.getAlbum() !=  null ? u.getAlbum().toDto() : null,
-                artists,
                 u.getDuration(),
                 u.getPictureUrl(),
                 u.getMusicUrl(),
