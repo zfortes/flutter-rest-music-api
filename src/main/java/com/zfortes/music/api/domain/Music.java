@@ -18,7 +18,7 @@ public class Music {
     @NotNull
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Album album;
 
     private String duration;
@@ -28,18 +28,4 @@ public class Music {
     private String musicUrl;
 
     private String genre;
-
-//    //TODO refatorar o contructor de Music
-//    public MusicDTO toDto() {
-//        MusicDTO musicDTO = new MusicDTO();
-//        musicDTO.setAlbum(this.album);
-//        musicDTO.setArtists(null);
-//        musicDTO.setDuration(this.duration);
-//        musicDTO.setGenre(this.genre);
-//        musicDTO.setId(this.id);
-//        musicDTO.setMusicUrl(this.musicUrl);
-//        musicDTO.setName(this.name);
-//        musicDTO.setPictureUrl(this.pictureUrl);
-//        return musicDTO;
-//    }
 }

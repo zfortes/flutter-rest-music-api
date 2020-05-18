@@ -8,6 +8,7 @@ import com.zfortes.music.api.repository.ArtistRepository;
 import com.zfortes.music.api.repository.MusicRepository;
 import com.zfortes.music.api.services.dtos.AlbumDTO;
 import com.zfortes.music.api.services.mappers.AlbumMapper;
+import com.zfortes.music.api.services.mappers.MusicMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -91,11 +92,9 @@ public class AlbumService {
 
         Optional<Album> album = albumRepository.findById(idAlbum);
         if (album.isPresent()) {
-            Album album1 = album.get();
-            List<Music> list = album1.getMusics();
-            list.add(music.get());
-            album1.setMusics(list);
-            return ResponseEntity.ok().body(AlbumMapper.toDto(albumRepository.save(album1)));
+            Music music1 = music.get();
+            music1.setAlbum(album.get());
+            return ResponseEntity.ok().body(MusicMapper.toDto(musicRepository.save(music1)));
         }else {
             return ResponseEntity.badRequest().body("Music not add");
         }
@@ -111,17 +110,4 @@ public class AlbumService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
-
-//    public ResponseEntity<AlbumDTO> findAlbumsByMusics(Long id) {
-//        Optional<Music> music = musicRepository.findById(id);
-//        if (!music.isPresent()) {
-//            return ResponseEntity.ok().build();
-//        }
-//        Optional<Album> album = musicRepository.findByAlbum();
-//        if (!album.isEmpty()){
-//            return ResponseEntity.ok().body();
-//        }else{
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-//        }
-//    }
 }

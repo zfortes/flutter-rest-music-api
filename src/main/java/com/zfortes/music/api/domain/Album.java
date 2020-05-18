@@ -1,6 +1,5 @@
 package com.zfortes.music.api.domain;
 
-import com.zfortes.music.api.services.dtos.AlbumDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,7 +24,7 @@ public class Album {
     @ManyToMany
     private List<Artist> artists;
 
-    @OneToMany
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
     private List<Music> musics;
 
 
