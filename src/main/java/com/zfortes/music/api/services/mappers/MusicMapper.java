@@ -14,7 +14,7 @@ import java.util.LinkedList;
 
 public class MusicMapper {
     public static MusicDTO toDto(Music u){
-        AlbumDTO albumDTO = u.getAlbum() !=  null ? new AlbumDTO() : AlbumMapper.toDto(u.getAlbum());
+        AlbumDTO albumDTO = u.getAlbum() ==  null ? new AlbumDTO() : AlbumMapper.toDto(u.getAlbum());
         return new MusicDTO(
                 u.getId(),
                 u.getName(),

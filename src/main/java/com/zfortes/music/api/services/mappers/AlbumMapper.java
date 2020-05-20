@@ -9,6 +9,7 @@ import com.zfortes.music.api.domain.Artist;
 import com.zfortes.music.api.services.dtos.AlbumDTO;
 import com.zfortes.music.api.services.dtos.ArtistDTO;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +17,7 @@ public class AlbumMapper {
     public static AlbumDTO toDto(Album u){
         List<ArtistDTO> artists =
                 u.getArtists() == null ?
-                        null :  u.getArtists().stream()
+                        new LinkedList<>() :  u.getArtists().stream()
                         .map(ArtistMapper::toDto).collect(Collectors.toList());
         return new AlbumDTO(
                 u.getId(),
@@ -28,7 +29,7 @@ public class AlbumMapper {
     public static Album toAlbum(AlbumDTO u) {
         List<Artist> artists =
                 u.getArtists() == null ?
-                        null :  u.getArtists().stream()
+                        new LinkedList<>() :  u.getArtists().stream()
                         .map(ArtistMapper::toArtist).collect(Collectors.toList());
         return new Album(
                 u.getId(),
