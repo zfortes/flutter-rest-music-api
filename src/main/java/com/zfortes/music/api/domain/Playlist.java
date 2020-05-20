@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
@@ -20,7 +21,7 @@ public class Playlist {
     private String name;
 
     @ManyToOne
-    @NotEmpty
+    @NotNull
     private AppUser appUser;
 
     @OneToMany
@@ -33,5 +34,13 @@ public class Playlist {
         this.name = name;
         this.appUser = appUser;
         this.musics = musics;
+    }
+
+    public void addMusic(Music music){
+        this.musics.add(music);
+    }
+
+    public void removeMusic(Music music) {
+        this.musics.remove(music);
     }
 }

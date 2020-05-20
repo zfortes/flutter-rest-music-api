@@ -9,23 +9,16 @@ import com.zfortes.music.api.domain.Playlist;
 import com.zfortes.music.api.services.dtos.AppUserDTO;
 import com.zfortes.music.api.services.dtos.PlaylistDTO;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class AppUserMapper {
     public static AppUserDTO toDto(AppUser u){
-        List<PlaylistDTO> playlists =
-                u.getPlaylists() == null ?
-                        null :  u.getPlaylists().stream()
-                        .map(PlaylistMapper::toDto).collect(Collectors.toList());
-        return new AppUserDTO(u.getId(), u.getName(), u.getUsername(), playlists);
+        return new AppUserDTO(u.getId(), u.getName(), u.getUsername());
     }
 
     public static AppUser toAppUser(AppUserDTO u){
-        List<Playlist> playlists =
-                u.getPlaylists() == null ?
-                        null :  u.getPlaylists().stream()
-                        .map(PlaylistMapper::toPlaylist).collect(Collectors.toList());
-        return new AppUser(u.getId(), u.getName(), u.getUsername(), playlists);
+        return new AppUser(u.getId(), u.getName(), u.getUsername());
     }
 }

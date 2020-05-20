@@ -11,6 +11,7 @@ import com.zfortes.music.api.services.dtos.AppUserDTO;
 import com.zfortes.music.api.services.dtos.MusicDTO;
 import com.zfortes.music.api.services.dtos.PlaylistDTO;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,9 +19,8 @@ public class PlaylistMapper {
     public static PlaylistDTO toDto(Playlist u){
         List<MusicDTO> musics =
                 u.getMusics() == null ?
-                        null :  u.getMusics().stream()
-                        .map(MusicMapper::toDto).collect(Collectors.toList());
-        AppUserDTO appUserDto = AppUserMapper.toDto(u.getAppUser());
+                        new LinkedList<>() :  u.getMusics().stream().map(MusicMapper::toDto).collect(Collectors.toList());
+        AppUserDTO appUserDto = AppUserMapper.toDto( u.getAppUser() == null ? new AppUser() : u.getAppUser());
         return new PlaylistDTO(
                 u.getId(),
                 u.getName(),
@@ -31,7 +31,7 @@ public class PlaylistMapper {
     public static Playlist toPlaylist(PlaylistDTO u){
         List<Music> musics =
                 u.getMusics() == null ?
-                        null :  u.getMusics().stream()
+                        new LinkedList<>() :  u.getMusics().stream()
                         .map(MusicMapper::toMusic).collect(Collectors.toList());
         AppUser appUserDto = AppUserMapper.toAppUser(u.getAppUser());
         return new Playlist(

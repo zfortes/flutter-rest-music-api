@@ -16,7 +16,7 @@ public class UserResource {
     UserService userService;
 
     @PostMapping
-    public ResponseEntity<AppUserDTO> save(@Valid AppUserDTO appUserDTO){
+    public ResponseEntity<?> save(@RequestBody @Valid AppUserDTO appUserDTO){
         return userService.save(appUserDTO);
     }
 
@@ -33,5 +33,10 @@ public class UserResource {
     @GetMapping
     public ResponseEntity<List<AppUserDTO>> findAll(){
         return userService.findAll();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id){
+        return userService.deleteById(id);
     }
 }

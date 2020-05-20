@@ -9,9 +9,12 @@ import com.zfortes.music.api.domain.Music;
 import com.zfortes.music.api.services.dtos.AlbumDTO;
 import com.zfortes.music.api.services.dtos.MusicDTO;
 
+import java.util.LinkedList;
+
+
 public class MusicMapper {
     public static MusicDTO toDto(Music u){
-        AlbumDTO albumDTO = u.getAlbum() !=  null ? AlbumMapper.toDto(u.getAlbum()) : null;
+        AlbumDTO albumDTO = u.getAlbum() !=  null ? new AlbumDTO() : AlbumMapper.toDto(u.getAlbum());
         return new MusicDTO(
                 u.getId(),
                 u.getName(),
@@ -24,7 +27,7 @@ public class MusicMapper {
     }
 
     public static Music toMusic(MusicDTO u){
-        Album album = u.getAlbum() !=  null ? AlbumMapper.toAlbum(u.getAlbum()) : null;
+        Album album = u.getAlbum() !=  null ? AlbumMapper.toAlbum(u.getAlbum()) : new Album();
         return new Music(
                 u.getId(),
                 u.getName(),

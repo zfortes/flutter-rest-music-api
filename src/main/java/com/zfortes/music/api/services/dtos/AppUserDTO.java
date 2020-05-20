@@ -22,13 +22,16 @@ public class AppUserDTO {
     @NotEmpty
     private String username;
 
-    private List<PlaylistDTO> playlists;
-
-    public AppUserDTO(Long id, String name, String username, List<PlaylistDTO> playlists) {
-        this.id = id;
-        this.playlists = playlists;
+    public AppUserDTO(String name, String username) {
         this.name = name;
         this.username = username;
     }
 
+    public AppUserDTO(Long id, @NotEmpty String name, String username) {
+        this.id = id;
+        this.name = name;
+        this.username =username;
+    }
+
+    public AppUserDTO(){}
 }
