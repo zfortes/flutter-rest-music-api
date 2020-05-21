@@ -19,7 +19,7 @@ public class ArtistResource {
 
     @GetMapping
     public ResponseEntity<?> findAll(){
-        return ResponseEntity.ok().body(artistService.findAll());
+        return  artistService.findAll();
     }
 
     @GetMapping("/{id}")

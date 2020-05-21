@@ -36,7 +36,7 @@ public class AlbumResource {
 
     @GetMapping("/find/artist/{id}")
     public ResponseEntity<?> findAlbumsByArtists(@PathVariable Long id){
-        return ResponseEntity.ok().body(albumService.findAlbumsByArtists(id));
+        return albumService.findAlbumsByArtists(id);
     }
 
     @GetMapping("/{id}")

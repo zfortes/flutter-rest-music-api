@@ -15,15 +15,15 @@ public class ArtistService {
     @Autowired
     private ArtistRepository artistRepository;
 
-    public ResponseEntity<ArtistDTO> save(ArtistDTO artistDTO) {
+    public ResponseEntity<?> save(ArtistDTO artistDTO) {
         return ResponseEntity.ok().body(artistRepository.save(artistDTO.toArtist()).toDto());
     }
 
-    public ResponseEntity<ArtistDTO> findById(Long id) {
+    public ResponseEntity<?> findById(Long id) {
         return ResponseEntity.ok().body(artistRepository.findById(id).get().toDto());
     }
 
-    public ResponseEntity<List<ArtistDTO>> findAll() {
+    public ResponseEntity<?> findAll() {
         return ResponseEntity.ok()
                 .body(artistRepository.findAll().stream().map(ArtistMapper::toDto).collect(Collectors.toList()));
     }

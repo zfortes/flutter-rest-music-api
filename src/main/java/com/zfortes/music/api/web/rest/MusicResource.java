@@ -19,7 +19,7 @@ public class MusicResource {
 
     @GetMapping
     public ResponseEntity<?> findAll(){
-        return ResponseEntity.ok().body(musicService.findAll());
+        return musicService.findAll();
     }
 
     @GetMapping("/{id}")
